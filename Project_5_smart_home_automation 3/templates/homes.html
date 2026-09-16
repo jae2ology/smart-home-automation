@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>My Homes</h1>{% for h in rows %}<div class="card"><h2><a href="{{url_for('home',hid=h.id)}}">{{h.name}}</a></h2>{{h.address_label}} · {{h.timezone}} · {{h.home_role}}</div>{% endfor %}{% endblock %}

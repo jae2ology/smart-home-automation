@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>Monitoring Alerts</h1><table><tr><th>Home</th><th>Kind</th><th>Severity</th><th>Message</th><th>Status</th></tr>{% for a in rows %}<tr><td>{{a.home}}</td><td>{{a.kind}}</td><td>{{a.severity}}</td><td>{{a.message}}</td><td>{{a.status}}</td></tr>{% endfor %}</table>{% endblock %}
