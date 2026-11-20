@@ -96,7 +96,7 @@ def alert_env(tmp_path, monkeypatch):
         ).fetchone()
         if not existing_enroll:
             db.execute(
-                "INSERT INTO monitoring_enrollments(home_id, status, emergency_contact_name, contact_phone) "
+                "INSERT INTO monitoring_enrollments(home_id, status, contact_name, contact_phone) "
                 "VALUES (?, 'ACTIVE', 'Jane Doe Emergency', '555-0199')",
                 (HOME_A_ID,),
             )
@@ -338,9 +338,9 @@ def test_tc_alert_06_least_privilege_data_view_for_monitoring_operator(alert_env
     mon_html = mon_resp.get_data(as_text=True)
 
     assert "FIRE_ALARM" in mon_html
-    assert (home_a["address_label"] in mon_html) and (enroll_a["emergency_contact_name"] in mon_html), (
+    assert (home_a["address_label"] in mon_html) and (enroll_a["contact_name"] in mon_html), (
         f"Least-Privilege Payload Defect (FR-35): /monitor/alerts omits home address_label "
-        f"({home_a['address_label']!r}) and/or contact_name({enroll_a['emergency_contact_name']!r})."
+        f"({home_a['address_label']!r}) and/or contact_name({enroll_a['contact_name']!r})."
     )
 
     # 2. Verify detailed device telemetry history is blocked for Monitoring Operator (FR-35)
