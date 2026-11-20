@@ -326,7 +326,7 @@ def test_tc_alert_06_least_privilege_data_view_for_monitoring_operator(alert_env
         )
         home_a = db.execute("SELECT address_label FROM homes WHERE id = ?", (HOME_A_ID,)).fetchone()
         enroll_a = db.execute(
-            "SELECT emergency_contact_name FROM monitoring_enrollments WHERE home_id = ?", (HOME_A_ID,)
+            "SELECT contact_nameFROM monitoring_enrollments WHERE home_id = ?", (HOME_A_ID,)
         ).fetchone()
         db.commit()
 
@@ -340,7 +340,7 @@ def test_tc_alert_06_least_privilege_data_view_for_monitoring_operator(alert_env
     assert "FIRE_ALARM" in mon_html
     assert (home_a["address_label"] in mon_html) and (enroll_a["emergency_contact_name"] in mon_html), (
         f"Least-Privilege Payload Defect (FR-35): /monitor/alerts omits home address_label "
-        f"({home_a['address_label']!r}) and/or emergency_contact_name ({enroll_a['emergency_contact_name']!r})."
+        f"({home_a['address_label']!r}) and/or contact_name({enroll_a['emergency_contact_name']!r})."
     )
 
     # 2. Verify detailed device telemetry history is blocked for Monitoring Operator (FR-35)
