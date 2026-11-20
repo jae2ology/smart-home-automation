@@ -326,7 +326,7 @@ def test_tc_alert_06_least_privilege_data_view_for_monitoring_operator(alert_env
         )
         home_a = db.execute("SELECT address_label FROM homes WHERE id = ?", (HOME_A_ID,)).fetchone()
         enroll_a = db.execute(
-            "SELECT contact_nameFROM monitoring_enrollments WHERE home_id = ?", (HOME_A_ID,)
+            "SELECT contact_name FROM monitoring_enrollments WHERE home_id = ?", (HOME_A_ID,)
         ).fetchone()
         db.commit()
 
