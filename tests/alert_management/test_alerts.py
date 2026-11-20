@@ -96,7 +96,7 @@ def alert_env(tmp_path, monkeypatch):
         ).fetchone()
         if not existing_enroll:
             db.execute(
-                "INSERT INTO monitoring_enrollments(home_id, status, emergency_contact_name, emergency_contact_phone) "
+                "INSERT INTO monitoring_enrollments(home_id, status, emergency_contact_name, contact_phone) "
                 "VALUES (?, 'ACTIVE', 'Jane Doe Emergency', '555-0199')",
                 (HOME_A_ID,),
             )
